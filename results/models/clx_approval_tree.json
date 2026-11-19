@@ -1,0 +1,1018 @@
+{
+  "format": "pydo-decision-tree",
+  "version": 1,
+  "source": "Constrained policy",
+  "variable": "APPROVE_ACTION",
+  "action_values": [
+    0,
+    1
+  ],
+  "features": [
+    {
+      "feature": "RISK_BAND",
+      "kind": "numeric",
+      "integer": true
+    },
+    {
+      "feature": "PRODUCT_GROUP",
+      "kind": "categorical",
+      "categories": [
+        "CLX_LARGE",
+        "CLX_MICRO",
+        "CLX_MID",
+        "CLX_SMALL"
+      ]
+    },
+    {
+      "feature": "TENOR_BUCKET",
+      "kind": "categorical",
+      "categories": [
+        "T_LONG",
+        "T_MID",
+        "T_SHORT"
+      ]
+    },
+    {
+      "feature": "AMOUNT_M",
+      "kind": "numeric",
+      "integer": false
+    },
+    {
+      "feature": "INTEREST_RATE",
+      "kind": "numeric",
+      "integer": false
+    }
+  ],
+  "params": {
+    "max_depth": 6,
+    "max_splits": 31,
+    "min_weight": 100,
+    "min_gini_gain": 0.0
+  },
+  "leaves": [
+    {
+      "leaf": 0,
+      "rule": "RISK_BAND = 6 AND TENOR_BUCKET = 'T_LONG'",
+      "action": 1,
+      "accounts": 234,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 1,
+      "rule": "7 <= RISK_BAND <= 8 AND TENOR_BUCKET = 'T_LONG' AND INTEREST_RATE <= 0.2886",
+      "action": 0,
+      "accounts": 209,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 8.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.28859999775886536
+        }
+      }
+    },
+    {
+      "leaf": 2,
+      "rule": "RISK_BAND = 6 AND TENOR_BUCKET = 'T_MID' AND AMOUNT_M <= 28 AND INTEREST_RATE > 0.32865",
+      "action": 1,
+      "accounts": 219,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": 28.0
+        },
+        "INTEREST_RATE": {
+          "lo": 0.32864999771118164,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 3,
+      "rule": "RISK_BAND = 6 AND TENOR_BUCKET = 'T_MID' AND AMOUNT_M > 28 AND INTEREST_RATE > 0.32865",
+      "action": 1,
+      "accounts": 141,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": 28.0,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.32864999771118164,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 4,
+      "rule": "RISK_BAND = 7 AND TENOR_BUCKET = 'T_LONG' AND INTEREST_RATE > 0.2886",
+      "action": 1,
+      "accounts": 133,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.28859999775886536,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 5,
+      "rule": "RISK_BAND = 8 AND TENOR_BUCKET = 'T_LONG' AND INTEREST_RATE > 0.2886",
+      "action": 1,
+      "accounts": 171,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 7.5,
+          "hi": 8.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.28859999775886536,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 6,
+      "rule": "RISK_BAND = 5 AND TENOR_BUCKET = 'T_LONG'",
+      "action": 1,
+      "accounts": 250,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 4.5,
+          "hi": 5.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 7,
+      "rule": "RISK_BAND = 5 AND TENOR_BUCKET = 'T_MID' AND INTEREST_RATE <= 0.2947",
+      "action": 0,
+      "accounts": 149,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 4.5,
+          "hi": 5.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.2947000116109848
+        }
+      }
+    },
+    {
+      "leaf": 8,
+      "rule": "RISK_BAND = 5 AND TENOR_BUCKET = 'T_MID' AND INTEREST_RATE > 0.2947",
+      "action": 1,
+      "accounts": 450,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 4.5,
+          "hi": 5.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.2947000116109848,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 9,
+      "rule": "RISK_BAND = 2 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE <= 0.35015",
+      "action": 1,
+      "accounts": 200,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.350150004029274
+        }
+      }
+    },
+    {
+      "leaf": 10,
+      "rule": "RISK_BAND = 2 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE > 0.35015",
+      "action": 1,
+      "accounts": 196,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.350150004029274,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 11,
+      "rule": "RISK_BAND = 4 AND TENOR_BUCKET = 'T_LONG'",
+      "action": 1,
+      "accounts": 209,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 3.5,
+          "hi": 4.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 12,
+      "rule": "RISK_BAND = 4 AND TENOR_BUCKET = 'T_MID'",
+      "action": 1,
+      "accounts": 567,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 3.5,
+          "hi": 4.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 13,
+      "rule": "RISK_BAND = 6 AND TENOR_BUCKET = 'T_MID' AND INTEREST_RATE <= 0.2991",
+      "action": 0,
+      "accounts": 173,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.29909999668598175
+        }
+      }
+    },
+    {
+      "leaf": 14,
+      "rule": "RISK_BAND = 6 AND TENOR_BUCKET = 'T_MID' AND 0.2991 < INTEREST_RATE <= 0.32865",
+      "action": 0,
+      "accounts": 144,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.29909999668598175,
+          "hi": 0.32864999771118164
+        }
+      }
+    },
+    {
+      "leaf": 15,
+      "rule": "RISK_BAND >= 9 AND TENOR_BUCKET = 'T_LONG' AND INTEREST_RATE <= 0.33485",
+      "action": 0,
+      "accounts": 277,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 8.5,
+          "hi": null
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.3348499983549118
+        }
+      }
+    },
+    {
+      "leaf": 16,
+      "rule": "RISK_BAND >= 9 AND TENOR_BUCKET = 'T_LONG' AND INTEREST_RATE > 0.33485",
+      "action": 0,
+      "accounts": 186,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 8.5,
+          "hi": null
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_LONG"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3348499983549118,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 17,
+      "rule": "RISK_BAND = 3 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE <= 0.35165",
+      "action": 0,
+      "accounts": 183,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.3516499996185303
+        }
+      }
+    },
+    {
+      "leaf": 18,
+      "rule": "RISK_BAND = 3 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE > 0.35165",
+      "action": 1,
+      "accounts": 195,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3516499996185303,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 19,
+      "rule": "RISK_BAND >= 8 AND TENOR_BUCKET != 'T_LONG'",
+      "action": 0,
+      "accounts": 4952,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 7.5,
+          "hi": null
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": null,
+          "not_in": [
+            "T_LONG"
+          ]
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 20,
+      "rule": "RISK_BAND = 7 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE > 0.3783",
+      "action": 0,
+      "accounts": 215,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3782999962568283,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 21,
+      "rule": "RISK_BAND = 7 AND TENOR_BUCKET = 'T_MID' AND INTEREST_RATE > 0.3783",
+      "action": 0,
+      "accounts": 179,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_MID"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3782999962568283,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 22,
+      "rule": "RISK_BAND <= 0 AND TENOR_BUCKET = 'T_SHORT'",
+      "action": 1,
+      "accounts": 599,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": null,
+          "hi": 0.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 23,
+      "rule": "RISK_BAND = 1 AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE <= 0.3125",
+      "action": 1,
+      "accounts": 161,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 0.5,
+          "hi": 1.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.3125
+        }
+      }
+    },
+    {
+      "leaf": 24,
+      "rule": "RISK_BAND = 1 AND PRODUCT_GROUP != 'CLX_SMALL' AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE > 0.3125",
+      "action": 1,
+      "accounts": 172,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 0.5,
+          "hi": 1.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": [
+            "CLX_SMALL"
+          ]
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3125,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 25,
+      "rule": "RISK_BAND = 1 AND PRODUCT_GROUP = 'CLX_SMALL' AND TENOR_BUCKET = 'T_SHORT' AND INTEREST_RATE > 0.3125",
+      "action": 1,
+      "accounts": 156,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 0.5,
+          "hi": 1.5
+        },
+        "PRODUCT_GROUP": {
+          "in": [
+            "CLX_SMALL"
+          ],
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3125,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 26,
+      "rule": "RISK_BAND <= 2 AND TENOR_BUCKET != 'T_SHORT'",
+      "action": 1,
+      "accounts": 4405,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": null,
+          "hi": 2.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": null,
+          "not_in": [
+            "T_SHORT"
+          ]
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 27,
+      "rule": "RISK_BAND = 3 AND TENOR_BUCKET != 'T_SHORT'",
+      "action": 1,
+      "accounts": 929,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": null,
+          "not_in": [
+            "T_SHORT"
+          ]
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 28,
+      "rule": "RISK_BAND = 7 AND TENOR_BUCKET != 'T_LONG' AND INTEREST_RATE <= 0.35775",
+      "action": 0,
+      "accounts": 598,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": null,
+          "not_in": [
+            "T_LONG"
+          ]
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": 0.3577499985694885
+        }
+      }
+    },
+    {
+      "leaf": 29,
+      "rule": "RISK_BAND = 7 AND TENOR_BUCKET != 'T_LONG' AND 0.35775 < INTEREST_RATE <= 0.3783",
+      "action": 0,
+      "accounts": 169,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": null,
+          "not_in": [
+            "T_LONG"
+          ]
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": 0.3577499985694885,
+          "hi": 0.3782999962568283
+        }
+      }
+    },
+    {
+      "leaf": 30,
+      "rule": "RISK_BAND = 4 AND TENOR_BUCKET = 'T_SHORT'",
+      "action": 0,
+      "accounts": 314,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 3.5,
+          "hi": 4.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    },
+    {
+      "leaf": 31,
+      "rule": "5 <= RISK_BAND <= 6 AND TENOR_BUCKET = 'T_SHORT'",
+      "action": 0,
+      "accounts": 841,
+      "conditions": {
+        "RISK_BAND": {
+          "lo": 4.5,
+          "hi": 6.5
+        },
+        "PRODUCT_GROUP": {
+          "in": null,
+          "not_in": []
+        },
+        "TENOR_BUCKET": {
+          "in": [
+            "T_SHORT"
+          ],
+          "not_in": []
+        },
+        "AMOUNT_M": {
+          "lo": null,
+          "hi": null
+        },
+        "INTEREST_RATE": {
+          "lo": null,
+          "hi": null
+        }
+      }
+    }
+  ]
+}

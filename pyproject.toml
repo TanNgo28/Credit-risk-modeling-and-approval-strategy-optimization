@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pydo"
+version = "0.0.1"
+description = "PyDO: a small decision-optimization library (portfolio, constraints, scenarios, distilled rule policies)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+explain = ["shap", "matplotlib"]          # DecisionTree.explain() and DecisionTree.visualize()
+
+[tool.setuptools.packages.find]
+where = ["src"]

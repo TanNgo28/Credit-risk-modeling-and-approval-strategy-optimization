@@ -1,0 +1,19 @@
+# input data (not published); the folder keeps only its README
+data/*
+!data/README.md
+
+# generated results that are account-level (re-created by running the notebooks)
+results/pd_predictions.csv
+results/constrained_output.csv
+
+# slide deck sources and results (not published)
+presentation/
+
+# environment, caches and build artefacts
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/

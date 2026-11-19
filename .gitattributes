@@ -1,0 +1,5 @@
+# normalise line endings; notebooks and data stay byte-exact
+* text=auto
+*.ipynb text eol=lf
+*.gz binary
+*.png binary
