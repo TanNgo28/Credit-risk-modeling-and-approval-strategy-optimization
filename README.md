@@ -23,6 +23,27 @@ The optimization library is **PyDO** (Pythonic Decision Optimizer, package `pydo
 The economics (interest, costs, recovery, default timing) are the synthetic assumptions of the exercise, not figures from a
 real portfolio.
 
+## Data flow
+
+```mermaid
+flowchart LR
+    A[("training_data.csv.gz<br/>200,000 applications")]
+    subgraph C1["Challenge 1: PD model"]
+        B["01_pd_model.ipynb<br/>Feature screening, WOE,<br/>logistic regression, LightGBM,<br/>calibration"]
+        C["pd_predictions.csv<br/>PD for 17,976 May-2015<br/>applications"]
+    end
+    subgraph C2["Challenge 2: approval optimization"]
+        D["02_portfolio_optimization.ipynb<br/>PyDO: loan economics,<br/>7 constraints, rule distillation,<br/>back-test"]
+        E["constrained_output.csv<br/>Decision for each application"]
+        F["optimal_policy.csv<br/>32 rules and KPI summary"]
+        G["clx_approval_tree.json, .sql<br/>Final policy as rules"]
+    end
+    A --> B --> C --> D
+    D --> E
+    D --> F
+    D --> G
+```
+
 ## Repository layout
 
 ```
