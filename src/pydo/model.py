@@ -115,7 +115,7 @@ class BoundRule:
 
 
 class Model:
-    """The compiled MIP of a scenario. Build once, solve once (or re-use ``rows`` for diagnostics)."""
+    """The compiled MILP of a scenario. Build once, solve once (or re-use ``rows`` for diagnostics)."""
 
     VALIDITY_EPS = 1e-6            # smallest positive denominator of a plain WEIGHTED_AVG
 

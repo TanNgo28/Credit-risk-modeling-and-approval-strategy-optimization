@@ -257,7 +257,7 @@ Làm nhiễu logit của PD (độ lệch chuẩn 1,39) cho Gini giảm từ 0,7
 
 1. Trồng CART trên **các cột thô** (`RISK_BAND`, `PRODUCT_GROUP`, `TENOR_BUCKET`, `AMOUNT_M`, `INTEREST_RATE`) để dự đoán quyết định của nghiệm tối ưu cấp tài khoản. Mỗi đơn được gán trọng số theo mức đáng giá của quyết định (|lợi nhuận nếu duyệt − nếu từ chối|), để cây tiêu các lần chia vào nơi có tiền.
 2. Chỉ giữ **phân hoạch** của cây (mỗi lá là một nhóm đơn).
-3. **Tối ưu lại một hành động chung cho mỗi lá** với **đúng bộ ràng buộc cũ**: một bài MIP nhỏ mà biến là lá, không phải đơn. Kết quả là một tập luật nhỏ vẫn khả thi (hoặc lỗi rõ ràng "phân hoạch quá thô: cần cây sâu hơn", không bao giờ vi phạm âm thầm).
+3. **Tối ưu lại một hành động chung cho mỗi lá** với **đúng bộ ràng buộc cũ**: một bài MILP nhỏ mà biến là lá, không phải đơn. Kết quả là một tập luật nhỏ vẫn khả thi (hoặc lỗi rõ ràng "phân hoạch quá thô: cần cây sâu hơn", không bao giờ vi phạm âm thầm).
 
 ### 8.2 Chọn cỡ cây
 

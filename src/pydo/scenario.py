@@ -181,7 +181,7 @@ class Scenario:
     def optimize(self, solver=None, time_limit=600, gap=0.01, n_jobs=None, verbose=False, **_ignored):
         """Select the treatment per account and compute the objective.
 
-        For the constrained flow: ``solver`` ('highs'), ``time_limit`` (seconds), ``gap`` (relative MIP gap),
+        For the constrained flow: ``solver`` ('highs'), ``time_limit`` (seconds), ``gap`` (relative MILP gap),
         ``verbose``. ``n_jobs`` is accepted and ignored. Raises InfeasibleModelError if no assignment satisfies
         every rule."""
         self._need_built("optimize()")

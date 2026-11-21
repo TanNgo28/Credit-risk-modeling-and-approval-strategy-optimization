@@ -48,7 +48,7 @@ Bài toán mẫu của dự án là duyệt/từ chối 17.976 đơn vay với 7
 | `functions.py` | `Functions`: nạp và chạy các hàm tính (kinh tế) |
 | `project.py` | `Project`: gắn mọi thứ lại, tạo `Scenario`, đăng ký và báo cáo kết quả |
 | `rules.py` | Bộ phân tích cú pháp luật, lớp `Constraints` |
-| `model.py` | Biên dịch luật thành ma trận MIP, gọi solver |
+| `model.py` | Biên dịch luật thành ma trận MILP, gọi solver |
 | `scenario.py` | `Scenario`: ba flow, báo cáo, `with_constraints`, `apply_policy` |
 | `tree.py` | `DecisionTree` |
 | `reports.py` | `Report`: so sánh các kịch bản |
@@ -253,7 +253,7 @@ scn.export("file.csv")       # lựa chọn từng tài khoản + biến đầu 
 |---|---|
 | `simulation` | Một chính sách **cố định**: `variable_to_decision={"APPROVE_ACTION": "APPROVE_ACTION_BAU"}` (đọc từ cột của danh mục, cột này phải có **trước** khi tạo `Portfolio`) **hoặc** `decisions={"APPROVE_ACTION": 1}` (hằng); không bao giờ truyền cả hai |
 | `unconstrained` | Tốt nhất của từng tài khoản không luật; khi hòa lấy phương án đầu của miền (từ chối) |
-| `constrained` | MIP như mục 6; cần `constraints` không rỗng |
+| `constrained` | MILP như mục 6; cần `constraints` không rỗng |
 
 - `constraints` cũng nhận được ở `simulation` và `unconstrained`: không áp luật nhưng `constraint_report()` cho biết chính sách đó vi phạm luật nào (đây là "slide đầu tiên" của đề).
 - `score` là **trung bình mục tiêu mỗi tài khoản**; `total` là tổng trên các tài khoản đang dùng; `total_portfolio = total × portfolio.scale` (tổng quy đổi cho toàn bộ, quan trọng khi dùng mẫu).
@@ -296,7 +296,7 @@ tree.fit(scenario=solved_constrained, variables=["RISK_BAND", "PRODUCT_GROUP", "
 
 1. Trồng CART (scikit-learn) để dự đoán quyết định của lời giải cấp tài khoản. Biến phân loại được mã hóa one-hot; trọng số mỗi đơn là mức đáng giá của quyết định (`|mục tiêu nếu duyệt − nếu từ chối|`, `sample_weight="stake"`) hoặc đều nhau (`None`). 70% tài khoản dùng để trồng cây, 30% để kiểm tra.
 2. Chỉ giữ **phân hoạch** (lá của từng tài khoản).
-3. Giải một **MIP nhỏ** trên các lá: mỗi lá một biến nhị phân (duyệt cả lá hoặc từ chối cả lá), với **đúng ma trận ràng buộc cũ** (nhân với ma trận thuộc lá). Kết quả là hành động chung của mỗi lá, tối đa hóa mục tiêu dưới mọi luật.
+3. Giải một **MILP nhỏ** trên các lá: mỗi lá một biến nhị phân (duyệt cả lá hoặc từ chối cả lá), với **đúng ma trận ràng buộc cũ** (nhân với ma trận thuộc lá). Kết quả là hành động chung của mỗi lá, tối đa hóa mục tiêu dưới mọi luật.
 4. Nếu không có cách gán lá nào thỏa mọi luật: `InfeasibleModelError` kèm hướng dẫn "phân hoạch quá thô, cần cây sâu hơn hoặc thêm biến".
 
 **Tham số:** `max_depth`; `max_splits` là số lần chia tối đa của cả cây (tối đa `max_splits + 1` lá; `0` cho cây một lá); `min_weight` là số tài khoản tối thiểu mỗi lá; `min_gini_gain` ánh xạ sang `min_impurity_decrease` của scikit-learn. **Ngưỡng `min_gini_gain` ảnh hưởng mạnh**: giá trị mặc định 0,0001 trong dự án này ngăn cây chia theo `PRODUCT_GROUP`, và giữ cây ở khoảng 88 đến 93% nghiệm tối ưu; giá trị 0 cho 97,35% với 32 lá. Hãy đưa nó vào lưới chọn cỡ cây.
